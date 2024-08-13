@@ -1,0 +1,78 @@
+.header{
+    background:url("../../assets/bg-sidebar-mobile.svg") no-repeat center center ;
+    background-size: cover;
+    min-height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+.header .steps-rings{
+    display: flex;
+    justify-content: center;
+    padding:0 2rem ;
+    align-items: center;
+    width:100%;
+    margin-top:2.5rem;
+}
+
+.header .steps-rings .ring-info :is(p,h3){
+    display: none;
+}
+
+.header .steps-rings .ring-link{
+    border:1.5px solid var(--white);
+  width:35px;
+  height: 35px;
+  border-radius: 50%;
+  margin-inline:0.5rem;
+  display: flex;
+  place-content: center;
+  line-height: 35px;
+  color:white;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+}
+.header .steps-rings .ring-info:nth-child(1) .ring-link{
+    background-color: var(--light-blue);
+    color:var(--marine-blue);
+}
+
+
+@media screen and (min-width:800px){
+    body{
+      background-color: var(--light-gray);
+  }
+  .header{
+      background:url("../../assets/bg-sidebar-desktop.svg") no-repeat center center ;
+      background-size: cover;
+      min-height: 85vh;
+      width: 280px;
+      margin:1.5rem;
+      border-radius: 0.5rem;
+  }
+  .header .steps-rings{
+      flex-direction: column;
+      justify-content: start;
+      align-items: flex-start;
+  }
+  .header .steps-rings .ring-link{
+      margin:1.5rem 1rem;
+  }
+  .header .steps-rings .ring-info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  .header .steps-rings .ring-info :is(p,h3){
+    display: block;
+    width:100%;
+    font-weight: bold;
+}
+.header .steps-rings .ring-info p{
+    color:var(--cool-gray);
+}
+.header .steps-rings .ring-info h3{
+    color:var(--magnolia);
+}
+}
