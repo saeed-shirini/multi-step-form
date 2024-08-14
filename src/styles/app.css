@@ -12,5 +12,7 @@
         width:clamp(500px,90vw,1000px);
         margin-inline: auto;
         margin-top: 3rem;
+        flex-direction: row;
+        justify-content: start;
     }
 }
