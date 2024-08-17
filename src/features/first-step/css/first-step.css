@@ -12,6 +12,10 @@
     color:var(--marine-blue);
     margin-bottom: 5px;
 }
+
+.form-info > div > input.errors{
+    border:1px solid var(--strawberry-red);
+}
 .form-info > div > input{
     width: 100%;
     padding:0.75rem ;
@@ -21,26 +25,10 @@
     font-size: 1rem;
     opacity: 0.7;
 }
-.btn-container{
-    width: 100%;
-    background-color: var(--white);
-    text-align: right;
-    padding:1rem 2rem;
-    transform: translateY(100%);
-}
-.btn-container button{
-    padding: 0.75rem;
-    border-radius: 0.5rem;
-    background-color: var(--marine-blue);
-    color:var(--white);
-    font-size: 1.2rem;
-    cursor: pointer;
-    border: none;
+
+.form-info > div > input:focus{
     outline: none;
 }
-
-@media screen and (min-width:800px){
-    .btn-container{
-        width: clamp(80%,50vw,120%);
-    }
+.form-info span{
+    color:var(--strawberry-red);
 }

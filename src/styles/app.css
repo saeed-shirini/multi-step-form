@@ -1,18 +1,17 @@
-.app{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    background-color:var(--white);
-    border-radius: 0.5rem;
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  background-color: var(--white);
+  border-radius: 0.5rem;
 }
 
-@media screen and (min-width:800px){
-    .app{
-        width:clamp(500px,90vw,1000px);
-        margin-inline: auto;
-        margin-top: 3rem;
-        flex-direction: row;
-        justify-content: start;
-    }
+@media screen and (min-width: 800px) {
+  .app {
+    width: clamp(500px, 90vw, 1000px);
+    margin-inline: auto;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+  }
 }

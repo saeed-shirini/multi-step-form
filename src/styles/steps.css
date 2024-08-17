@@ -1,52 +1,47 @@
-body{
+body {
+  position: relative;
+}
+.container {
+  background-color: var(--light-gray);
+}
+.step {
+  background-color: var(--alabaster);
+  width: 90%;
+  margin-inline: auto;
+  padding: 2rem;
+  transform: translate(0%, -30%);
+  z-index: 1000;
+  border-radius: 0.75rem;
+  min-height: 400px;
+}
+.step .description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+.step .description h1 {
+  color: var(--marine-blue);
+  font-weight: bold;
+  font-size: 28px;
+}
+.step .description p {
+  color: var(--cool-gray);
+  font-size: 18px;
+  margin-bottom: 1rem;
+}
+
+@media screen and (min-width: 800px) {
+  .container {
+    background-color: transparent;
+  }
+  .step {
+    position: static;
+    transform: translate(0, 0);
+    background-color: transparent;
+    width: clamp(300px, 45vw, 900px);
+    min-height: 85vh;
     position: relative;
-}
-.container{
-    background-color: var(--light-gray);
-}
-.step{
-    background-color:var(--alabaster);
-    width:90%;
-    margin-inline:auto;
-    padding:2rem;
-    /*position: absolute;
-    top:130%;
-    left:50%;*/
-    transform: translate(0%,-30%);
-    z-index: 1000;
-    border-radius: 0.75rem;
-    min-height: 400px;
-}
-.step .description{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    gap:0.5rem;
-}
-.step .description h1{
-    color:var(--marine-blue);
-    font-weight: bold;
-    font-size: 28px;
-}
-.step .description p{
-    color:var(--cool-gray);
-    font-size: 18px;
-    margin-bottom: 1rem;
-}
-
-@media screen and (min-width:800px){
-    .container{
-        background-color: var(--white);
-    }
-    .step{
-        position: static;
-        transform: translate(2%,10%);
-        background-color: transparent;
-        width: clamp(80%,50vw,120%);
-    }
-    .step{
-        width: clamp(80%,50vw,120%);
-    }
-
+  }
 }
