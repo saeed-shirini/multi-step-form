@@ -3,11 +3,7 @@ import "../button/button.css";
 const Button = ({ children, viewport, handleSubmit }) => {
   return (
     <div className={`btn-container btn-container-${viewport}`}>
-      <button
-        type="submit"
-        onClick={handleSubmit(onsubmit)}
-        className="next-step"
-      >
+      <button type="submit" onClick={handleSubmit} className="next-step">
         {" "}
         {children}
       </button>

@@ -1,17 +1,42 @@
 import "../css/first-step.css";
 import { useForm } from "react-hook-form";
+import { useNavigate, useOutletContext } from "react-router-dom";
+import { useState } from "react";
 import Button from "../../../components/button/Button";
-import "../../../components/Input/Input";
+import Input from "../../../components/Input/Input";
 
 const PersonalInfo = () => {
+  const { name, email, phone } =
+    JSON.parse(localStorage.getItem("form-info")) || [];
+  const [userInfo, setUserInfo] = useState({
+    name: name,
+    email: email,
+    phone: phone,
+  });
+  const [activeStep, setActiveStep, pathIndex] = useOutletContext();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const navigate = useNavigate();
 
   const onSubmit = (data) => {
-    console.log(data);
+    if (data !== null) {
+      localStorage.setItem("form-info", JSON.stringify(userInfo));
+      if (!activeStep.includes(2)) {
+        setActiveStep([...activeStep, Number(activeStep) + 1]);
+        localStorage.setItem(
+          "steps",
+          JSON.stringify([...activeStep, Number(activeStep) + 1])
+        );
+      }
+    }
+    return navigate("/step-two");
+  };
+
+  const handleChange = (e) => {
+    setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
   };
 
   return (
@@ -21,61 +46,60 @@ const PersonalInfo = () => {
           <h1>Personal Info</h1>
           <p>please provide name,email,address,phone number</p>
         </div>
+
         <form className="form-info">
-          <div className="name-info">
-            <label>Name</label>
-            <input
-              {...register("name", { required: "please fill out name field" })}
-              type="text"
-              placeholder="e.g. stephen king"
-              className={errors.name === undefined ? "" : "errors"}
-            />
-            {errors.name && <span>{errors.name?.message}</span>}
-          </div>
-
-          <div className="email-info">
-            <label>Email Address</label>
-            <input
-              {...register("email", {
-                required: "please fill out email field",
-                pattern: {
-                  value: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
-                  message: "Invalid email address",
-                },
-              })}
-              type="text"
-              placeholder="e.g. stephen king@lorem.com"
-              className={errors.email === undefined ? "" : "errors"}
-            />
-            {errors.email && <span>{errors.email?.message}</span>}
-          </div>
-
-          <div className="phone-info">
-            <label>Phone Number</label>
-            <input
-              {...register("phone", {
-                required: "please fill out phone number field ",
-                minLength: {
-                  value: 7,
-                  message: "must be greather than 7 char",
-                },
-                pattern: {
-                  value: /^\d+$/,
-                  message: "must be number",
-                },
-              })}
-              type="text"
-              placeholder="e.g. 123 456 7890"
-              className={errors.phone === undefined ? "" : "errors"}
-            />
-            {errors.phone && <span>{errors.phone?.message}</span>}
-          </div>
+          <Input
+            register={register}
+            validationSchema={{ required: "please fill out name field" }}
+            label="Name"
+            name="name"
+            placeholder="e.g. stephen king"
+            errors={errors}
+            value={userInfo.name}
+            change={handleChange}
+          />
+          <Input
+            register={register}
+            validationSchema={{
+              required: "please fill out email field",
+              pattern: {
+                value: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+                message: "Invalid email address",
+              },
+            }}
+            label="Email Address"
+            name="email"
+            placeholder="e.g. stephen king@lorem.com"
+            errors={errors}
+            value={userInfo.email}
+            change={handleChange}
+          />
+          <Input
+            register={register}
+            validationSchema={{
+              required: "please fill out phone number field ",
+              minLength: {
+                value: 7,
+                message: "must be greather than 7 char",
+              },
+              pattern: {
+                value: /^\d+$/,
+                message: "must be number",
+              },
+            }}
+            label="Phone Number"
+            name="phone"
+            placeholder="e.g. 123 456 7890"
+            errors={errors}
+            value={userInfo.phone}
+            change={handleChange}
+          />
         </form>
-        <Button viewport="desktop" handleSubmit={handleSubmit}>
+        <Button viewport="desktop" handleSubmit={handleSubmit(onSubmit)}>
           next step
         </Button>
       </div>
-      <Button viewport="mobile" handleSubmit={handleSubmit}>
+      <Button viewport="mobile" handleSubmit={handleSubmit(onSubmit)}>
         next step
       </Button>
     </div>

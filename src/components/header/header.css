@@ -33,7 +33,7 @@
   text-decoration: none;
   cursor: pointer;
 }
-.header .steps-rings .ring-info:nth-child(1) .ring-link {
+.header .steps-rings .ring-info .ring-link.active {
   background-color: var(--light-blue);
   color: var(--marine-blue);
 }
