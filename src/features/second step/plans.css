@@ -1,0 +1,115 @@
+@import "../../styles/steps.css";
+
+.step2 {
+  transform: translate(0, -25%);
+}
+.plan-cards {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.5rem;
+  gap: 10px;
+}
+.plan-card {
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 15px;
+  padding: 1.2rem;
+  border-radius: 0.5rem;
+  border: 2px solid var(--light-gray);
+  cursor: pointer;
+  min-height: 110px;
+}
+.plan-card.selected {
+  border-color: var(--pastel-blue);
+  background-color: var(--magnolia);
+}
+.plan-card:hover {
+  border-color: var(--pastel-blue);
+}
+.plan-card p {
+  color: var(--marine-blue);
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.plan-card p.free-time {
+  font-weight: normal;
+}
+.plan-card span {
+  color: var(--cool-gray);
+}
+.month-year-selected {
+  background-color: var(--magnolia);
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  gap: 20px;
+  position: relative;
+}
+.month-year-selected p {
+  color: var(--cool-gray);
+  font-weight: bold;
+}
+.month-year-selected p:nth-of-type(2) {
+  color: var(--cool-gray);
+}
+.month-year-selected input[type="checkbox"] {
+  position: relative;
+  background-color: var(--marine-blue);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 50px;
+  border-radius: 1.5rem;
+  height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.month-year-selected input[type="checkbox"]::after {
+  content: "";
+  position: absolute;
+  left: 5%;
+  top: 10%;
+  width: 1rem;
+  height: 1rem;
+  background-color: var(--alabaster);
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.month-year-selected input[type="checkbox"]:checked::after {
+  left: calc(95% - 1rem);
+}
+.month-year-selected p.active {
+  color: var(--marine-blue);
+}
+
+@media screen and (min-width: 800px) {
+  .step2 {
+    transform: translate(0, 0);
+  }
+  .plan-cards {
+    flex-direction: row;
+  }
+  .plan-card {
+    max-width: 100%;
+    min-height: 200px;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+  }
+  .plan-card p.free-time {
+    margin-top: 5px;
+  }
+  .plan-info {
+    position: absolute;
+    bottom: 10%;
+    left: 10%;
+  }
+}

@@ -4,6 +4,12 @@
   text-align: right;
   padding: 1rem 2rem;
   transform: translateY(100%);
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+.btn-container.space-between {
+  justify-content: space-between;
 }
 .btn-container-desktop {
   display: none;
@@ -18,6 +24,12 @@ button {
   border: none;
   outline: none;
 }
+.go-back {
+  border: none;
+  outline: none;
+  color: var(--cool-gray);
+  background-color: transparent;
+}
 
 @media screen and (min-width: 800px) {
   .btn-container {
@@ -25,7 +37,7 @@ button {
     margin-top: 3rem;
   }
   .btn-container-desktop {
-    display: block;
+    display: flex;
     background-color: transparent;
     padding: 0.75rem 2rem;
     position: absolute;

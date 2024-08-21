@@ -13,7 +13,7 @@ const PersonalInfo = () => {
     email: email,
     phone: phone,
   });
-  const [activeStep, setActiveStep, pathIndex] = useOutletContext();
+  const [activeStep, setActiveStep, getIndexPath] = useOutletContext();
   const {
     register,
     handleSubmit,
@@ -95,11 +95,19 @@ const PersonalInfo = () => {
             change={handleChange}
           />
         </form>
-        <Button viewport="desktop" handleSubmit={handleSubmit(onSubmit)}>
+        <Button
+          viewport="desktop"
+          pathIndex={getIndexPath}
+          handleSubmit={handleSubmit(onSubmit)}
+        >
           next step
         </Button>
       </div>
-      <Button viewport="mobile" handleSubmit={handleSubmit(onSubmit)}>
+      <Button
+        viewport="mobile"
+        pathIndex={getIndexPath}
+        handleSubmit={handleSubmit(onSubmit)}
+      >
         next step
       </Button>
     </div>

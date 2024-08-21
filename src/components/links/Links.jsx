@@ -7,9 +7,10 @@ const Links = ({
   stepDescription,
   path,
   activeStep,
+  pathIndex,
 }) => {
   const activeElems = activeStep.find((active) => {
-    return Number(active) === Number(id);
+    return active === id;
   });
   const checkDisabledElements = (event) => {
     if (activeElems === undefined) {
@@ -21,7 +22,7 @@ const Links = ({
     <div className="ring-info">
       <Link
         onClick={checkDisabledElements}
-        className={`ring-link ${activeElems !== undefined ? "active" : ""}`}
+        className={`ring-link ${pathIndex + 1 === id ? "active" : ""}`}
         to={path}
       >
         {stepNumber}

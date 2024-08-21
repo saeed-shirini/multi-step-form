@@ -25,8 +25,8 @@ function App() {
 
   return (
     <div className="app">
-      <Header activeStep={activeStep} />
-      <Outlet context={[activeStep, setActiveStep]} />
+      <Header activeStep={activeStep} pathIndex={getIndexPath} />
+      <Outlet context={[activeStep, setActiveStep, getIndexPath]} />
     </div>
   );
 }

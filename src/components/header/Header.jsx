@@ -31,13 +31,21 @@ const links = [
   },
 ];
 
-const Header = ({ activeStep }) => {
+const Header = ({ activeStep, pathIndex }) => {
   return (
     <div className="container">
       <header className="header">
         <div className="steps-rings">
           {links.map(({ id, ...link }) => {
-            return <Links key={id} id={id} activeStep={activeStep} {...link} />;
+            return (
+              <Links
+                key={id}
+                id={id}
+                activeStep={activeStep}
+                pathIndex={pathIndex}
+                {...link}
+              />
+            );
           })}
         </div>
       </header>
