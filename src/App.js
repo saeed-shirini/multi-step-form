@@ -17,6 +17,19 @@ function App() {
   });
   const getIndexPath = path.indexOf(findUrlPath);
 
+  /*const submitNextbtn = (storageName, data, stepLevel, redirect) => {
+    if (data !== null) {
+      localStorage.setItem(storageName, JSON.stringify(data));
+      if (!activeStep.includes(stepLevel)) {
+        setActiveStep([...activeStep, Number(activeStep) + 1]);
+        localStorage.setItem(
+          "steps",
+          JSON.stringify([...activeStep, Number(activeStep) + 1])
+        );
+      }
+    }
+    return navigate(redirect);
+  };*/
   useEffect(() => {
     if (getIndexPath + 1 > activeStep.length) {
       return navigate(path[activeStep.length - 1]);

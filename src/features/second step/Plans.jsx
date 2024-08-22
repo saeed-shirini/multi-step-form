@@ -149,7 +149,9 @@ const allPlans = [
 ];
 
 const Plans = () => {
-  const planIdStorage = JSON.parse(localStorage.getItem("plan")).id;
+  const planIdStorage =
+    JSON.parse(localStorage.getItem("plan")) &&
+    JSON.parse(localStorage.getItem("plan")).id;
   const [monthlyCheckBox, setMonthlyCheckBox] = useState(true);
   const [selectedPlanId, setSelectedPlanId] = useState(planIdStorage || 1);
 

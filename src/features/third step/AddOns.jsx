@@ -50,14 +50,21 @@ const allAddOns = [
 ];
 
 const AddOns = () => {
-  const [selectedAddOns, setSelectedAddOns] = useState([]);
   const planType = JSON.parse(localStorage.getItem("plan")).type;
+  const storageAddOns = JSON.parse(localStorage.getItem("addons"));
+  const [selectedAddOns, setSelectedAddOns] = useState(
+    (storageAddOns && storageAddOns[0].type === planType && storageAddOns) || []
+  );
   const [activeStep, setActiveStep, getIndexPath] = useOutletContext();
   const navigate = useNavigate();
 
   const addOnsTypeFilter = allAddOns.filter((addOns) => {
     return addOns.type === planType;
   });
+
+  /*const findTypeAddOns = selectedAddOns.find((addOns) => {
+    return addOns.type === planType;
+  });*/
 
   const handleSelectChange = (addOnsId) => {
     var copySelectedAddOns = [...selectedAddOns];
@@ -66,10 +73,11 @@ const AddOns = () => {
       return addOns.id === addOnsId;
     });
 
-    const issSelected = selectedAddOns.find((addOns) => {
+    const isSelected = selectedAddOns.find((addOns) => {
       return addOns.id === addOnsId;
     });
-    if (issSelected) {
+
+    if (isSelected) {
       const removeNotSelected = copySelectedAddOns.filter((addOns) => {
         return addOns.id !== addOnsId;
       });
@@ -80,8 +88,17 @@ const AddOns = () => {
   };
 
   const handleSubmit = () => {
-    alert();
+    if (selectedAddOns.length > 0) {
+      localStorage.setItem("addons", JSON.stringify(selectedAddOns));
+      if (!activeStep.includes(4)) {
+        const newStep = Number(activeStep.length) + 1;
+        setActiveStep([...activeStep, newStep]);
+        localStorage.setItem("steps", JSON.stringify([...activeStep, newStep]));
+      }
+      return navigate("/step-four");
+    }
   };
+
   return (
     <div className="container">
       <div className="step step3">

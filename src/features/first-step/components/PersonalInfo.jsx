@@ -13,7 +13,8 @@ const PersonalInfo = () => {
     email: email,
     phone: phone,
   });
-  const [activeStep, setActiveStep, getIndexPath] = useOutletContext();
+  const [activeStep, setActiveStep, getIndexPath, submitNextbtn] =
+    useOutletContext();
   const {
     register,
     handleSubmit,
@@ -22,6 +23,7 @@ const PersonalInfo = () => {
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
+    //submitNextbtn("fonr-info", userInfo, 2, "/step-two");
     if (data !== null) {
       localStorage.setItem("form-info", JSON.stringify(userInfo));
       if (!activeStep.includes(2)) {
