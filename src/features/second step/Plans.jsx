@@ -149,11 +149,14 @@ const allPlans = [
 ];
 
 const Plans = () => {
+  const planIdStorage = JSON.parse(localStorage.getItem("plan")).id;
   const [monthlyCheckBox, setMonthlyCheckBox] = useState(true);
-  const [selectedPlanId, setSelectedPlanId] = useState(1);
+  const [selectedPlanId, setSelectedPlanId] = useState(planIdStorage || 1);
+
   const [activeStep, setActiveStep, getIndexPath] = useOutletContext();
   const navigate = useNavigate();
   const planType = monthlyCheckBox ? "monthly" : "yearly";
+
   const findselectedPlan = allPlans.find((plan) => {
     return plan.id === selectedPlanId;
   });

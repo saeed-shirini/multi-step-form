@@ -1,0 +1,71 @@
+@imoort "../../styles/steps.css";
+
+.add-ons-items {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.5rem;
+  gap: 10px;
+}
+.add-ons-item {
+  border: 2px solid var(--light-gray);
+  width: 100%;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add-ons-item .left {
+  display: flex;
+  align-items: center;
+}
+.add-ons-item input {
+  width: 20px;
+  height: 20px;
+}
+.add-ons-item input:checked {
+  accent-color: var(--purplish-blue);
+}
+
+.add-ons-item .add-ons-description {
+  margin-left: 1.5rem;
+  cursor: pointer;
+}
+.add-ons-item .add-ons-description p {
+  color: var(--marine-blue);
+  font-weight: bold;
+}
+.add-ons-item .add-ons-description span {
+  color: var(--cool-gray);
+  font-weight: 500;
+}
+
+.add-ons-item .right {
+  color: var(--purplish-blue);
+  font-weight: bold;
+}
+
+@media screen and (max-width: 400px) {
+  .step {
+    transform: translate(0, -20%);
+  }
+  .add-ons-item {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .add-ons-item .left {
+    flex-direction: column;
+    justify-content: center;
+  }
+  .add-ons-item .left {
+    gap: 20px;
+    text-align: center;
+  }
+  .add-ons-item .add-ons-description {
+    margin-inline: auto;
+  }
+}

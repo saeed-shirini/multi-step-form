@@ -26,6 +26,15 @@ body {
   --white: hsl(0, 0%, 100%);
 }
 
+.plan-card.selected,
+.add-ons-item.selected {
+  border-color: var(--pastel-blue);
+  background-color: var(--magnolia);
+}
+.plan-card:hover,
+.add-ons-item:hover {
+  border-color: var(--pastel-blue);
+}
 @media screen and (min-width: 800px) {
   body {
     height: 100vh;

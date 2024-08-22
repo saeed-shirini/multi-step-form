@@ -9,11 +9,15 @@ const Links = ({
   activeStep,
   pathIndex,
 }) => {
-  const activeElems = activeStep.find((active) => {
+  /*const activeElems = activeStep.find((active) => {
     return active === id;
-  });
+  });*/
+
   const checkDisabledElements = (event) => {
-    if (activeElems === undefined) {
+    const getDisabledLinks = activeStep.filter((active) => {
+      return active !== id;
+    });
+    if (getDisabledLinks) {
       event.preventDefault();
     }
   };
