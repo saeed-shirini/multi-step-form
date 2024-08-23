@@ -1,0 +1,72 @@
+@import "../../styles/steps.css";
+
+.summary-item,
+.total-price {
+  padding: 0.8rem 0;
+}
+.summary,
+.total-price {
+  padding: 1.5rem;
+}
+
+.summary {
+  background-color: var(--magnolia);
+  border-radius: 0.5rem;
+  margin-top: 1.5rem;
+}
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+.summary-item:nth-child(1) {
+  border-bottom: 1px solid var(--light-gray);
+}
+
+.summary-item .service-name {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.summary-item .service-name span {
+  color: var(--marine-blue);
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+.summary-item:nth-child(2) .service-name span,
+.summary-item:nth-child(3) .service-name span,
+.summary-item:nth-child(4) .service-name span {
+  color: #777;
+  opacity: 0.7;
+  font-weight: 400;
+}
+.summary-item:nth-child(2) .service-price p,
+.summary-item:nth-child(3) .service-price p,
+.summary-item:nth-child(4) .service-price p {
+  color: var(--marine-blue);
+  font-weight: 400;
+}
+.summary-item .service-name .change-link {
+  color: #777;
+}
+.summary-item .service-price p {
+  color: var(--marine-blue);
+  font-weight: bold;
+}
+.total-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  color: #777;
+}
+.total-price h3 {
+  color: var(--purplish-blue);
+}
+
+@media screen and (min-width: 800px) {
+  .total-price {
+    margin-top: 0;
+  }
+}

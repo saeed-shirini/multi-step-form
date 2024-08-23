@@ -3,6 +3,7 @@ import App from "./App";
 import PersonalInfo from "./features/first-step/components/PersonalInfo";
 import Plans from "./features/second step/Plans";
 import AddOns from "./features/third step/AddOns";
+import Summary from "./features/fourth step/Summary";
 
 const router = createBrowserRouter([
   {
@@ -18,7 +19,7 @@ const router = createBrowserRouter([
         element: <Plans />,
       },
       { path: "step-three", element: <AddOns /> },
-      { path: "step-four", element: "step4" },
+      { path: "step-four", element: <Summary /> },
     ],
   },
 ]);

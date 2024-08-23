@@ -3,6 +3,7 @@ import Button from "../../components/button/Button";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import { act, useState } from "react";
 import Plan from "./Plan";
+import StepDescription from "../../components/stepDescription/StepDescription";
 
 const allPlans = [
   {
@@ -197,10 +198,10 @@ const Plans = () => {
   return (
     <div className="container">
       <div className="step step2">
-        <div className="description">
-          <h1>Select your plan </h1>
-          <p>You have option of monthly or yearly billing.</p>
-        </div>
+        <StepDescription
+          title={"Select your plan"}
+          description={"You have option of monthly or yearly billing."}
+        />
 
         <section className="plan-cards">
           {allPlans.map(({ id, type, ...plan }) => {

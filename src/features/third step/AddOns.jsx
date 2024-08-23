@@ -3,6 +3,7 @@ import { useState } from "react";
 import AddOn from "./AddOn";
 import Button from "../../components/button/Button";
 import { useNavigate, useOutletContext } from "react-router-dom";
+import StepDescription from "../../components/stepDescription/StepDescription";
 
 const allAddOns = [
   {
@@ -30,21 +31,21 @@ const allAddOns = [
     id: 4,
     name: "Oneline service",
     description: "Access to multiplayer games",
-    price: "+$10/mo",
+    price: "+$10/yr",
     type: "yearly",
   },
   {
     id: 5,
     name: "Larger storage",
     description: "Extra 1TB cloud save",
-    price: "+$20/mo",
+    price: "+$20/yr",
     type: "yearly",
   },
   {
     id: 6,
     name: "Customizable profile",
     description: "Custom theme on your profile",
-    price: "+$20/mo",
+    price: "+$20/yr",
     type: "yearly",
   },
 ];
@@ -102,10 +103,10 @@ const AddOns = () => {
   return (
     <div className="container">
       <div className="step step3">
-        <div className="description">
-          <h1>Pick Add-Ons</h1>
-          <p>Add-ons help enhance your gaming experience</p>
-        </div>
+        <StepDescription
+          title={"Pick Add-Ons"}
+          description={"Add-ons help enhance your gaming experience"}
+        />
 
         <section className="add-ons-items">
           {addOnsTypeFilter.map(({ id, ...addOn }) => {

@@ -4,6 +4,7 @@ import { useNavigate, useOutletContext } from "react-router-dom";
 import { useState } from "react";
 import Button from "../../../components/button/Button";
 import Input from "../../../components/Input/Input";
+import StepDescription from "../../../components/stepDescription/StepDescription";
 
 const PersonalInfo = () => {
   const { name, email, phone } =
@@ -44,11 +45,10 @@ const PersonalInfo = () => {
   return (
     <div className="container">
       <div className="step step1">
-        <div className="description">
-          <h1>Personal Info</h1>
-          <p>please provide name,email,address,phone number</p>
-        </div>
-
+        <StepDescription
+          title={"Personal Info"}
+          description={"please provide name,email,address,phone number"}
+        />
         <form className="form-info">
           <Input
             register={register}
