@@ -1,6 +1,6 @@
 import "../css/first-step.css";
 import { useForm } from "react-hook-form";
-import { useNavigate, useOutletContext } from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
 import { useState } from "react";
 import Button from "../../../components/button/Button";
 import Input from "../../../components/Input/Input";
@@ -14,18 +14,16 @@ const PersonalInfo = () => {
     email: email,
     phone: phone,
   });
-  const [activeStep, setActiveStep, getIndexPath, submitNextbtn] =
-    useOutletContext();
+  const [getIndexPath, submitNextbtn] = useOutletContext();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const navigate = useNavigate();
 
   const onSubmit = (data) => {
-    //submitNextbtn("fonr-info", userInfo, 2, "/step-two");
-    if (data !== null) {
+    submitNextbtn("form-info", userInfo, 2, "/step-two");
+    /*if (data !== null) {
       localStorage.setItem("form-info", JSON.stringify(userInfo));
       if (!activeStep.includes(2)) {
         setActiveStep([...activeStep, Number(activeStep) + 1]);
@@ -35,7 +33,7 @@ const PersonalInfo = () => {
         );
       }
     }
-    return navigate("/step-two");
+    return navigate("/step-two");*/
   };
 
   const handleChange = (e) => {

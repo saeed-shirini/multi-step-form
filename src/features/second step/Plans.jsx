@@ -1,9 +1,9 @@
 import "./plans.css";
-import Button from "../../components/button/Button";
-import { useNavigate, useOutletContext } from "react-router-dom";
-import { act, useState } from "react";
+import Button from "components/button/Button";
+import { useOutletContext } from "react-router-dom";
+import { useState } from "react";
 import Plan from "./Plan";
-import StepDescription from "../../components/stepDescription/StepDescription";
+import StepDescription from "components/stepDescription/StepDescription";
 
 const allPlans = [
   {
@@ -155,44 +155,28 @@ const Plans = () => {
     JSON.parse(localStorage.getItem("plan")).id;
   const [monthlyCheckBox, setMonthlyCheckBox] = useState(true);
   const [selectedPlanId, setSelectedPlanId] = useState(planIdStorage || 1);
+  const [getIndexPath, submitNextbtn] = useOutletContext();
 
-  const [activeStep, setActiveStep, getIndexPath] = useOutletContext();
-  const navigate = useNavigate();
   const planType = monthlyCheckBox ? "monthly" : "yearly";
 
   const findselectedPlan = allPlans.find((plan) => {
     return plan.id === selectedPlanId;
   });
 
-  const loopInPlans = (planType) => {
-    const mapPlans = planType.map(({ id, ...plan }) => {
-      return (
-        <Plan
-          key={id}
-          id={id}
-          checked={monthlyCheckBox}
-          handleSelect={handleSelectPlan}
-          slectedPlanId={selectedPlanId}
-          {...plan}
-        />
-      );
-    });
-    return mapPlans;
-  };
-
   const handleSelectPlan = (planId) => {
     setSelectedPlanId(planId);
   };
 
   const handleSubmit = () => {
-    localStorage.setItem("plan", JSON.stringify(findselectedPlan));
+    submitNextbtn("plan", findselectedPlan, 3, "/step-three");
+    /* localStorage.setItem("plan", JSON.stringify(findselectedPlan));
     if (!activeStep.includes(3)) {
       const newStep = Number(activeStep.length) + 1;
       setActiveStep([...activeStep, newStep]);
 
       localStorage.setItem("steps", JSON.stringify([...activeStep, newStep]));
     }
-    return navigate("/step-three");
+    return navigate("/step-three");*/
   };
 
   return (

@@ -2,7 +2,7 @@ import "./addons.css";
 import { useState } from "react";
 import AddOn from "./AddOn";
 import Button from "../../components/button/Button";
-import { useNavigate, useOutletContext } from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
 import StepDescription from "../../components/stepDescription/StepDescription";
 
 const allAddOns = [
@@ -51,21 +51,18 @@ const allAddOns = [
 ];
 
 const AddOns = () => {
-  const planType = JSON.parse(localStorage.getItem("plan")).type;
+  const planType =
+    JSON.parse(localStorage.getItem("plan")) &&
+    JSON.parse(localStorage.getItem("plan")).type;
   const storageAddOns = JSON.parse(localStorage.getItem("addons"));
   const [selectedAddOns, setSelectedAddOns] = useState(
     (storageAddOns && storageAddOns[0].type === planType && storageAddOns) || []
   );
-  const [activeStep, setActiveStep, getIndexPath] = useOutletContext();
-  const navigate = useNavigate();
+  const [getIndexPath, submitNextbtn] = useOutletContext();
 
   const addOnsTypeFilter = allAddOns.filter((addOns) => {
     return addOns.type === planType;
   });
-
-  /*const findTypeAddOns = selectedAddOns.find((addOns) => {
-    return addOns.type === planType;
-  });*/
 
   const handleSelectChange = (addOnsId) => {
     var copySelectedAddOns = [...selectedAddOns];
@@ -90,13 +87,14 @@ const AddOns = () => {
 
   const handleSubmit = () => {
     if (selectedAddOns.length > 0) {
-      localStorage.setItem("addons", JSON.stringify(selectedAddOns));
+      submitNextbtn("addons", selectedAddOns, 4, "/step-four");
+      /*localStorage.setItem("addons", JSON.stringify(selectedAddOns));
       if (!activeStep.includes(4)) {
         const newStep = Number(activeStep.length) + 1;
         setActiveStep([...activeStep, newStep]);
         localStorage.setItem("steps", JSON.stringify([...activeStep, newStep]));
       }
-      return navigate("/step-four");
+      return navigate("/step-four");*/
     }
   };
 
